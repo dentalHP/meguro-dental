@@ -354,6 +354,34 @@
             <p>&copy; 2025 Meguro Dental. All Rights Reserved.</p>
         </div>
     </footer>
+<!-- ▼▼▼ ハンバーガーメニューを動かすプログラム ▼▼▼ -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // 1. ボタンとメニューを探す
+        const toggleBtn = document.querySelector('.nav-toggle');
+        const navList = document.querySelector('.nav-list'); // ※もしメニューが出てこない場合はここを確認
 
+        // 2. ボタンが見つかったらクリックイベントを設定
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function () {
+                // ボタンに 'active' クラスをつける（×印にするためなど）
+                toggleBtn.classList.toggle('active');
+                
+                // メニューに 'active' クラスをつける（表示させるため）
+                if (navList) {
+                    navList.classList.toggle('active');
+                    
+                    // ※念のため、CSSで制御されていない場合用に直接表示を切り替える設定
+                    if (navList.style.display === 'block') {
+                        navList.style.display = ''; // 隠す
+                    } else {
+                        navList.style.display = 'block'; // 表示する
+                    }
+                }
+            });
+        }
+    });
+</script>
+</body>
 </body>
 </html>

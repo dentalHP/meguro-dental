@@ -924,5 +924,42 @@ header {
   color: #2563eb;             /* hover時に少し濃い青に */
   text-decoration: underline; /* hoverで下線を表示（分かりやすく） */
 }
+/* ▼▼▼ 追加修正：スマホ表示の調整 ▼▼▼ */
+        @media (max-width: 768px) {
+            /* 1. 全体の余白（縦幅）をギュッと狭くする */
+            .recruit-section, .section {
+                padding: 40px 0 !important; /* 元の半分くらいに */
+            }
+            .recruit-hero {
+                padding: 60px 0 30px !important; /* トップ画像部分の余白削減 */
+            }
+            .section-title {
+                margin-bottom: 25px !important; /* 見出し下の余白削減 */
+            }
+            
+            /* 2. チェックマークのズレを直す */
+            .job-body {
+                text-align: left !important; /* カードの中身を強制的に左寄せ */
+            }
+            .job-list {
+                display: inline-block; /* ブロックとして扱う */
+                width: 100%;
+                padding-left: 5px; /* 左端の微調整 */
+            }
+            .job-list li {
+                text-align: left; /* 文字を左揃え */
+                padding-left: 1.8em; /* アイコン分のスペース確保 */
+                margin-bottom: 15px; /* 行間調整 */
+                line-height: 1.6;
+            }
+            .job-list li::before {
+                top: 0; /* アイコンの位置調整 */
+                left: 0;
+            }
 
+            /* その他の見出し調整 */
+            h1, h2 {
+                line-height: 1.4; /* 行間を少し詰める */
+            }
+        }
 
