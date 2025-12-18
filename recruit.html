@@ -1,68 +1,359 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>採用情報｜目白デンタルクリニック</title>
-  <meta name="description" content="目白デンタルクリニックの採用情報。歯科衛生士・歯科助手・受付スタッフを募集しています。">
-  <link rel="stylesheet" href="style.css">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>採用情報 | Meguro Dental</title>
+    <meta name="description" content="Meguro Dentalの採用情報ページです。">
+    
+    <!-- ▼【重要】メインのCSS（style.css）を読み込みます -->
+    <link rel="stylesheet" href="style.css">
 
+    <style>
+        /* 
+           ここには「採用ページ専用」のスタイルのみ記述しています。
+           ヘッダーやフォントは style.css の設定が適用されます。
+        */
+
+        /* --- 採用ページ専用レイアウト --- */
+        .recruit-hero {
+            background-color: #eaf6ff;
+            padding: 100px 0;
+            text-align: left;
+        }
+        
+        /* スマホ対応 */
+        @media (max-width: 768px) {
+            .recruit-hero {
+                padding: 60px 0;
+                text-align: center;
+            }
+            .recruit-hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .recruit-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        .section-title span {
+            display: block;
+            font-size: 1rem;
+            color: #0078d7;
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #0078d7;
+            color: #fff;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #005a9e;
+            transform: translateY(-2px);
+        }
+
+        /* --- メリット --- */
+        .merit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .merit-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .merit-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #0078d7;
+            border-bottom: 2px solid #eaf6ff;
+            padding-bottom: 10px;
+        }
+        @media (max-width: 768px) {
+            .merit-grid { grid-template-columns: 1fr; }
+        }
+
+        /* --- 募集職種 --- */
+        .job-block {
+            margin-bottom: 50px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+        }
+        .job-header {
+            background-color: #1a202c;
+            color: #fff;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .job-body {
+            padding: 30px;
+        }
+        .job-body h4 {
+            font-size: 1.1rem;
+            color: #0078d7;
+            margin-bottom: 15px;
+        }
+        .job-list { list-style: none; }
+        .job-list li {
+            position: relative;
+            padding-left: 1.5em;
+            margin-bottom: 10px;
+        }
+        .job-list li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: #38a169;
+            font-weight: bold;
+        }
+
+        /* --- 募集要項テーブル --- */
+        .req-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+        }
+        .req-table th, .req-table td {
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            text-align: left;
+        }
+        .req-table th {
+            background-color: #f1f5f9;
+            width: 30%;
+            font-weight: bold;
+        }
+        @media (max-width: 600px) {
+            .req-table th, .req-table td { display: block; width: 100%; }
+            .req-table th { background-color: #eaf6ff; }
+        }
+
+        /* --- CTA --- */
+        .cta-box {
+            background: #fff;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .cta-tel {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+            display: block;
+            color: #333;
+        }
+    </style>
+</head>
 <body>
-  <!-- ✅ ヘッダー -->
+
+     <!-- 固定ヘッダー -->
   <header class="site-header">
     <div class="container header-inner">
-      <div class="logo">Mejiro Dental</div>
+      <div class="logo">Meguro Dental</div>
+
       <nav class="nav">
         <a href="index.html#about">当院について</a>
         <a href="index.html#menu">診療メニュー</a>
         <a href="index.html#feature">選ばれる理由</a>
         <a href="index.html#access">アクセス</a>
-        <a href="recruit.html" class="nav-accent">採用情報</a>
-      </nav>
+<a href="#recruit" class="nav-accent">採用情報</a>
+</nav>
+
+      <!-- スマホ用ハンバーガーボタン -->
+      <button class="nav-toggle" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <main>
-    <section class="section section-accent" style="padding-top:100px;">
-      <div class="container">
-        <h1 style="font-size:28px;">採用情報</h1>
-        <p class="section-lead">
-          一緒に地域の皆さまのお口の健康を支えてくれる仲間を募集しています。<br>
-          明るく、やさしい雰囲気の中で患者さまに寄り添う仕事をしませんか？
-        </p>
-      </div>
-    </section>
-
-    <section id="recruit" class="section">
-      <div class="container">
-        <h2>募集職種</h2>
-        <ul class="check-list">
-          <li>歯科衛生士（正社員・パート）</li>
-          <li>歯科助手・受付（正社員・パート）</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="recruit-bottom" class="section section-accent">
-      <div class="container">
-        <h2>応募・お問い合わせ</h2>
-        <p class="section-lead">
-          見学だけでも大歓迎です。お気軽にお電話またはメールでご連絡ください。
-        </p>
-        <div class="hero-cta">
-          <a href="tel:0000000000" class="btn primary">📞 電話で問い合わせる</a>
-          <a href="mailto:info@example.com" class="btn ghost">✉️ メールで問い合わせる</a>
+    <!-- メインビジュアル -->
+    <section class="recruit-hero">
+        <div class="container">
+            <h1>採用情報</h1>
+            <h2 style="font-size: 1.5rem; margin: 20px 0;">あなたの笑顔が、地域の安心につながる。<br>患者さまのお口の健康を支える仕事。</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                一緒に地域の皆さまのお口の健康を支えてくれる仲間を募集しています。<br>
+                明るく、やさしい雰囲気の中で患者さまに寄り添う仕事をしませんか？
+            </p>
+            <br>
+            <a href="#entry" class="btn">募集要項を見る</a>
         </div>
-      </div>
     </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="footer-logo">Mejiro Dental</p>
-      <p class="footer-copy">© 2025 Mejiro Dental Clinic</p>
-    </div>
-  </footer>
+    <!-- コンセプト -->
+    <section class="recruit-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span>Our Concept</span>
+                大切にしているのは、<br>「心」の通うコミュニケーション。
+            </h2>
+            <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+                <p>
+                    Meguro Dentalは、地域の皆さまにとって「通いやすい」「相談しやすい」歯科医院を目指しています。<br><br>
+                    歯の治療は誰でも不安なもの。だからこそ、私たちはスタッフ同士のチームワークを大切にし、院内をいつも明るくポジティブな空気で満たすことを心がけています。<br>
+                    あなたの優しさや気配りを、ぜひ当院で活かしてください。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 選ばれる理由 -->
+    <section class="recruit-section" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title">
+                <span>Why work with us?</span>
+                Meguro Dentalが働きやすい理由
+            </h2>
+            <div class="merit-grid">
+                <!-- 01 -->
+                <div class="merit-card">
+                    <h3>01. 安心のサポート体制</h3>
+                    <p>経験の浅い方やブランクのある方でも安心してスタートできるよう、先輩スタッフが丁寧にフォローします。マニュアルや研修制度も整えており、着実にスキルアップできる環境です。</p>
+                </div>
+                <!-- 02 -->
+                <div class="merit-card">
+                    <h3>02. プライベートも充実</h3>
+                    <p>仕事とプライベートのメリハリをつけて働けるよう、残業の削減や有給休暇の取得を推奨しています。心に余裕を持って働けるからこそ、患者さまにも優しく接することができます。</p>
+                </div>
+                <!-- 03 -->
+                <div class="merit-card">
+                    <h3>03. 明るく仲の良い職場</h3>
+                    <p>職種に関係なく意見を言い合える、風通しの良い職場です。ランチタイムや休憩中は笑い声が絶えないアットホームな雰囲気なので、新人さんもすぐに馴染んでいただけます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 募集職種詳細 -->
+    <section class="recruit-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span>Recruitment</span>
+                募集職種について
+            </h2>
+
+            <!-- 歯科衛生士 -->
+            <div class="job-block">
+                <div class="job-header">歯科衛生士（正社員・パート）</div>
+                <div class="job-body">
+                    <h4>予防のプロとして、患者さまの健康を守る</h4>
+                    <p>歯科予防処置、歯科保健指導、診療補助などをお任せします。患者さま一人ひとりと長く向き合い、信頼関係を築きながら経過を見守ることができます。</p>
+                    <br>
+                    <strong>【こんな方におすすめ】</strong>
+                    <ul class="job-list">
+                        <li>患者さまとの会話を大切にしたい方</li>
+                        <li>スキルアップを目指して勉強したい方</li>
+                        <li>資格を活かして、地域医療に貢献したい方</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 歯科助手・受付 -->
+            <div class="job-block">
+                <div class="job-header">歯科助手・受付（正社員・パート）</div>
+                <div class="job-body">
+                    <h4>医院の顔として、安心と笑顔を届ける</h4>
+                    <p>受付での患者さま対応、診療器具の準備・片付け、ドクターのサポートなどを行います。医療の知識がなくても大丈夫。まずは「明るい挨拶」から始めましょう。</p>
+                    <br>
+                    <strong>【こんな方におすすめ】</strong>
+                    <ul class="job-list">
+                        <li>人と接することが好きな方</li>
+                        <li>テキパキとサポートするのが得意な方</li>
+                        <li>未経験から医療業界で働いてみたい方</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 募集要項テーブル -->
+    <section class="recruit-section" style="background-color: #f9f9f9;" id="entry">
+        <div class="container">
+            <h2 class="section-title">
+                <span>Data</span>
+                募集要項
+            </h2>
+            <table class="req-table">
+                <tr>
+                    <th>勤務地</th>
+                    <td>Meguro Dental（目黒駅 徒歩3分）</td>
+                </tr>
+                <tr>
+                    <th>雇用形態</th>
+                    <td>正社員 / パート・アルバイト</td>
+                </tr>
+                <tr>
+                    <th>給与</th>
+                    <td>
+                        【歯科衛生士】月給 〇〇万円〜 / 時給 〇〇円〜<br>
+                        【歯科助手・受付】月給 〇〇万円〜 / 時給 〇〇円〜<br>
+                        ※経験・能力を考慮の上決定します
+                    </td>
+                </tr>
+                <tr>
+                    <th>勤務時間</th>
+                    <td>
+                        平日：9:00〜19:00（休憩〇分）<br>
+                        土曜：9:00〜17:00（休憩〇分）
+                    </td>
+                </tr>
+                <tr>
+                    <th>休日・休暇</th>
+                    <td>完全週休2日制、祝日、夏季休暇、年末年始、有給休暇</td>
+                </tr>
+                <tr>
+                    <th>待遇・福利厚生</th>
+                    <td>社会保険完備、交通費全額支給、制服貸与、昇給・賞与あり</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- CTA エントリー -->
+    <section class="recruit-section" style="background-color: #eaf6ff;">
+        <div class="container">
+            <div class="cta-box">
+                <h2>まずはお気軽に見学へお越しください！</h2>
+                <p>「職場の雰囲気を知りたい」「詳しい条件を聞きたい」という方は、院内見学も随時受け付けています。<br>少しでも興味をお持ちいただけたら、お気軽にご連絡ください。</p>
+                <a href="tel:0300000000" class="cta-tel">TEL: 03-xxxx-xxxx</a>
+                <a href="#" class="btn">応募フォームはこちら</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container" style="text-align: center; padding: 20px;">
+            <p>&copy; 2025 Meguro Dental. All Rights Reserved.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
